@@ -3,4 +3,6 @@
 .vim_info
 .zsh_history
 .tag_lock
-
+.gitconfig
+.gitmodules
+.viminfo
