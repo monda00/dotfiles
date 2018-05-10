@@ -2,10 +2,10 @@ set nocompatible
 filetype plugin indent off
 
 if has('vim_starting')
-  set runtimepath+=~/dotfiles/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#begin(expand('~/dotfiles/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -45,6 +45,7 @@ NeoBundle 'octol/vim-cpp-enhanced-highlight'
 NeoBundle 'joshdick/onedark.vim'
 NeoBundle 'soramugi/auto-ctags.vim'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'dracula/vim'
 
 call neobundle#end()
 
@@ -66,7 +67,7 @@ set background=dark
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 
-colorscheme onedark
+color dracula
 set t_Co=256
 
 set guifont=Ricty\ for\ Powerline:h18
