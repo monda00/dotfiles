@@ -117,11 +117,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export http_proxy=http://133.91.64.24:8082/
-export https_proxy=http://133.91.64.24:8082/
+function _update_ps1() {
+    PS1="$(/usr/local/bin/powerline-shell $?)"
+}
 
-## for CPLEX
-export PATH=$PATH:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux/
-
-## for oplrun
-export LD_LIBRARY_PATH=/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux/
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
