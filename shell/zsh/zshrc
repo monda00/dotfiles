@@ -1,4 +1,16 @@
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
 zplug "b-ryan/powerline-shell"
+
+# syntax
+zplug "chrissicool/zsh-256color"
+zplug "Tarrasch/zsh-colors"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "ascii-soup/zsh-url-highlighter"
+
+# tools
+zplug "zsh-users/zsh-autosuggestions"
 
 function powerline_precmd() {
     PS1="$(powerline-shell --shell zsh $?)"
@@ -16,3 +28,12 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
+
+# 大文字小文字を区別しない
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# lsコマンドで色分けする
+zstyle ':completion:*' list-colors $LSCOLORS
+alias ls='ls -G'
+
+zplug load
