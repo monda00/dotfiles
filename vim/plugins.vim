@@ -44,7 +44,8 @@ Bundle 'dracula/vim'
 Bundle 'Vimjas/vim-python-pep8-indent'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'Shougo/neocomplete.vim'
-Bundle 'jacoborus/tender.vim'
+
+call vundle#end()
 
 filetype plugin indent on
 
