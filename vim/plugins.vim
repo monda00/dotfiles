@@ -1,6 +1,6 @@
 filetype plugin indent off
 
-set runtimepath+=~/.vim/bundle/vundle/
+set runtimepath+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 Plugin 'gmarik/vundle'
@@ -38,7 +38,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'freeo/vim-kalisi'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'joshdick/onedark.vim'
-Plugin 'soramugi/auto-ctags.vim'
+" Plugin 'soramugi/auto-ctags.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'dracula/vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
