@@ -13,6 +13,10 @@ set nocursorline " カーソル行を強調表示しない
 autocmd InsertEnter,InsertLeave * set cursorline! " 挿入モードの時のみ、カーソル行をハイライトする
 set laststatus=2 " 最下部のステータスを常に表示
 set noshowmode
+set cursorline " 行を強調表示
+set cursorcolumn " 列を強調表示
+set colorcolumn=80
+
 
 " 全角スペースの表示
 function! ZenkakuSpace()
