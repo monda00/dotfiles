@@ -37,3 +37,4 @@ zstyle ':completion:*' list-colors $LSCOLORS
 alias ls='ls -G'
 
 zplug load
+export PATH=$HOME/.nodebrew/current/bin:$PATH
