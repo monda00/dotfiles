@@ -48,4 +48,6 @@ nnoremap sQ :<C-u>bd<CR>
 " jjでインサートからノーマル
 inoremap <silent> jj <ESC>
 
+" 一括コメントアウト
+vmap <silent> <Leader>cc gcc
 
