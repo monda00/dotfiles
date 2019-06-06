@@ -44,6 +44,7 @@ Plugin 'dracula/vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
 " Plugin 'davidhalter/jedi-vim'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'neoclide/coc.nvim'
 
 call vundle#end()
 
