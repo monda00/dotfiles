@@ -42,6 +42,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'dracula/vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'neoclide/coc.nvim'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 
