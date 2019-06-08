@@ -38,12 +38,9 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'freeo/vim-kalisi'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'joshdick/onedark.vim'
-" Plugin 'soramugi/auto-ctags.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'dracula/vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
-" Plugin 'davidhalter/jedi-vim'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'neoclide/coc.nvim'
 
 call vundle#end()
