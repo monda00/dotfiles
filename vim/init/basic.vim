@@ -1,4 +1,3 @@
-set number         " 行番号を表示する
 set showmatch      " 対応する括弧を強調表示
 set ruler          " カーソルが何行目の何列か表示
 set showcmd        " コマンドの一部を表示
