@@ -10,7 +10,9 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Shougo/vimshell'
 Plugin 'jpalardy/vim-slime'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'tpope/vim-rails'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-surround'
@@ -41,7 +43,7 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'dracula/vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'neoclide/coc.nvim'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'w0rp/ale'
 
 call vundle#end()
