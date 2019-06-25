@@ -11,6 +11,8 @@ iTermの設定上はRicty Nerd Font??
 #### 参照
 
 [vimのnerdtreeにファイルアイコンをつける](https://qiita.com/sizukutamago/items/2ba906ab3fa404eac02d)
+[homebrewを使ってiTerm2でRicty for powerline設定した](https://qiita.com/osakanafish/items/731dc31168e3330dbcd0)
+[Homebrewを使ってRictyをインストール](https://qiita.com/mktktmr/items/5481eac60b96c80cc262)
 
 ## 困った時のメモ
 
