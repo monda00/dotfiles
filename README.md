@@ -4,6 +4,8 @@
 
 Ricty Regular Nerd Font Plus Font Awesome Plus Octicons
 
+iTermの設定上はRicty Nerd Font??
+
 ## ファイルアイコン系
 
 #### 参照
