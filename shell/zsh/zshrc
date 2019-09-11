@@ -50,3 +50,9 @@ export PYENV_ROOT=/usr/local/var/pyenv
 # 自動補完機能
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
+# ==========
+# alias
+# ==========
+
+alias vim="nvim"
+
