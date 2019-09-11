@@ -82,5 +82,10 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
 
 
+"------------------------------
+" neovim用
+"------------------------------
 
+let g:python_host_prog=$PYENV_ROOT.'/versions/neovim-2/bin/python'
+let g:python3_host_prog=$PYENV_ROOT.'/versions/neovim-3/bin/python'
 
