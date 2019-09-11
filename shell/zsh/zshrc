@@ -40,3 +40,13 @@ zplug load
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# ===========
+# pyenv
+# ==========
+# ~/.pyenvを/usr/loca/var/pyenvに変更
+export PYENV_ROOT=/usr/local/var/pyenv
+
+# 自動補完機能
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
