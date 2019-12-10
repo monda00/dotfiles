@@ -45,6 +45,7 @@ Plugin 'dracula/vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'w0rp/ale'
+Plugin 'OmniSharp/omnisharp-vim'
 
 call vundle#end()
 
