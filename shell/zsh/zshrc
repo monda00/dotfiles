@@ -12,10 +12,6 @@ zplug "ascii-soup/zsh-url-highlighter"
 # tools
 zplug "zsh-users/zsh-autosuggestions"
 
-# プロンプト
-autoload -U promptinit; promptinit
-prompt pure
-
 # 大文字小文字を区別しない
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
@@ -25,8 +21,25 @@ alias ls='ls -G'
 
 zplug load
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# ==========
+# prompt
+# ==========
+autoload -U promptinit; promptinit
+# optionally define some options
+PURE_CMD_MAX_EXEC_TIME=10
+
+# change the path color
+zstyle :prompt:pure:path color white
+
+# change the color for both `prompt:success` and `prompt:error`
+zstyle ':prompt:pure:prompt:*' color cyan
+
+# turn on git stash status
+zstyle :prompt:pure:git:stash show yes
+
+prompt pure
 
 # ===========
 # pyenv
