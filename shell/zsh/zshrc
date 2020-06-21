@@ -59,3 +59,8 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 alias vim="nvim"
 
+# ==========
+# k8s
+# ==========
+source <(kubectl completion zsh)
+
