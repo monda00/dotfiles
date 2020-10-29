@@ -55,4 +55,5 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # ==========
 
 alias vim="nvim"
+alias python="python3.9"
 
