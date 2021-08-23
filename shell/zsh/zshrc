@@ -58,10 +58,10 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # ==========
 
 alias vim="nvim"
-alias python="python3.7"
+alias python="python3"
+alias pip="pip3"
 
 # ==========
 # k8s
 # ==========
 source <(kubectl completion zsh)
-
