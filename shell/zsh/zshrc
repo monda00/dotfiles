@@ -1,67 +1,216 @@
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
+# ---------------------------------------------------------
+# Zinit's installer
+# ---------------------------------------------------------
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-zplug "b-ryan/powerline-shell"
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# syntax
-zplug "chrissicool/zsh-256color"
-zplug "Tarrasch/zsh-colors"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "ascii-soup/zsh-url-highlighter"
+# ---------------------------------------------------------
+# plugin list
+# ---------------------------------------------------------
 
-# tools
-zplug "zsh-users/zsh-autosuggestions"
+zinit light zsh-users/zsh-completions # 補完
+zinit light zsh-users/zsh-autosuggestions # 補完
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light chrissicool/zsh-256color
+zinit light dracula/zsh # テーマ
+zinit light dracula/zsh-syntax-highlighting
 
-# 大文字小文字を区別しない
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# ---------------------------------------------------------
+# basic
+# ---------------------------------------------------------
 
-# lsコマンドで色分けする
-zstyle ':completion:*' list-colors $LSCOLORS
-alias ls='ls -G'
+## 履歴保存管理
+HISTFILE=$ZDOTDIR/.zsh-history
+HISTSIZE=100000
+SAVEHIST=1000000
 
-zplug load
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+## 他のzshと履歴を共有
+setopt inc_append_history
+setopt share_history
 
-# ==========
-# prompt
-# ==========
-autoload -U promptinit; promptinit
-# optionally define some options
-PURE_CMD_MAX_EXEC_TIME=10
+## 環境変数を補完
+setopt AUTO_PARAM_KEYS
 
-# change the path color
-zstyle :prompt:pure:path color magenta
-
-# change the color for both `prompt:success` and `prompt:error`
-zstyle ':prompt:pure:prompt:*' color cyan
-
-# turn on git stash status
-zstyle :prompt:pure:git:stash show yes
-
-prompt pure
-
-# ===========
-# pyenv
-# ==========
-# ~/.pyenvを/usr/loca/var/pyenvに変更
-export PYENV_ROOT=/usr/local/var/pyenv
-
-# 自動補完機能
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-# ==========
+# ---------------------------------------------------------
 # alias
-# ==========
+# ---------------------------------------------------------
 
-alias vim="nvim"
+alias ls='ls -G'
 alias python="python3"
 alias pip="pip3"
 
-# ==========
-# k8s
-# ==========
-source <(kubectl completion zsh)
+# ---------------------------------------------------------
+# prompt
+# ---------------------------------------------------------
+
+DRACULA_ARROW_ICON="➜ "
+
+# ---------------------------------------------------------
+# completion
+# ---------------------------------------------------------
+
+# コマンド補完
+autoload -Uz compinit && compinit
+
+# 小文字でも大文字にマッチ
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# 補完候補をTabや矢印で選択可能
+zstyle ':completion:*:default' menu select=1
+
+# ---------------------------------------------------------
+# hight-light
+# ---------------------------------------------------------
+
+# サジェストの色変更
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
+
+# lsコマンドで色分けする
+zstyle ':completion:*' list-colors $LSCOLORS
+
+# ---------------------------------------------------------
+# peco
+# ---------------------------------------------------------
+
+## コマンド履歴検索 ctrl+r
+function peco-history-selection() {
+  BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
+## コマンド履歴からディレクトリ検索・移動 ctrl+e
+if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
+  autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+  add-zsh-hook chpwd chpwd_recent_dirs
+  zstyle ':completion:*' recent-dirs-insert both
+  zstyle ':chpwd:*' recent-dirs-default true
+  zstyle ':chpwd:*' recent-dirs-max 1000
+  zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/chpwd-recent-dirs"
+fi
+function peco-cdr () {
+  local selected_dir="$(cdr -l | sed 's/^[0-9]* *//' | peco)"
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+}
+zle -N peco-cdr
+bindkey '^E' peco-cdr
+
+## カレントディレクトリ以下のディレクトリ検索・移動 ctrl+x
+function find_cd() {
+  local selected_dir=$(find . -type d | peco)
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+}
+zle -N find_cd
+bindkey '^X' find_cd
+
+# ---------------------------------------------------------
+# dracula hight-light
+# ---------------------------------------------------------
+
+# Dracula Theme (for zsh-syntax-highlighting)
+#
+# https://github.com/zenorocha/dracula-theme
+#
+# Copyright 2021, All rights reserved
+#
+# Code licensed under the MIT license
+# http://zenorocha.mit-license.org
+#
+# @author George Pickering <@bigpick>
+# @author Zeno Rocha <hi@zenorocha.com>
+# Paste this files contents inside your ~/.zshrc before you activate zsh-syntax-highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main cursor)
+typeset -gA ZSH_HIGHLIGHT_STYLES
+# Default groupings per, https://spec.draculatheme.com, try to logically separate
+# possible ZSH_HIGHLIGHT_STYLES settings accordingly...?
+#
+# Italics not yet supported by zsh; potentially soon:
+#    https://github.com/zsh-users/zsh-syntax-highlighting/issues/432
+#    https://www.zsh.org/mla/workers/2021/msg00678.html
+# ... in hopes that they will, labelling accordingly with ,italic where appropriate
+#
+# Main highlighter styling: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
+#
+## General
+### Diffs
+### Markup
+## Classes
+## Comments
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#6272A4'
+## Constants
+## Entitites
+## Functions/methods
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#50FA7B'
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=#50FA7B'
+ZSH_HIGHLIGHT_STYLES[global-alias]='fg=#50FA7B'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#50FA7B'
+ZSH_HIGHLIGHT_STYLES[command]='fg=#50FA7B'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=#50FA7B,italic'
+ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=#FFB86C,italic'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#FFB86C'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#FFB86C'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=#BD93F9'
+## Keywords
+## Built ins
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#8BE9FD'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#8BE9FD'
+ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=#8BE9FD'
+## Punctuation
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-unquoted]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=#FF79C6'
+## Serializable / Configuration Languages
+## Storage
+## Strings
+ZSH_HIGHLIGHT_STYLES[command-substitution-quoted]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-quoted]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]='fg=#FF5555'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]='fg=#FF5555'
+ZSH_HIGHLIGHT_STYLES[rc-quote]='fg=#F1FA8C'
+## Variables
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument-unclosed]='fg=#FF5555'
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[assign]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[named-fd]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[numeric-fd]='fg=#F8F8F2'
+## No category relevant in spec
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#FF5555'
+ZSH_HIGHLIGHT_STYLES[path]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=#BD93F9'
+#ZSH_HIGHLIGHT_STYLES[command-substitution]='fg=?'
+#ZSH_HIGHLIGHT_STYLES[command-substitution-unquoted]='fg=?'
+#ZSH_HIGHLIGHT_STYLES[process-substitution]='fg=?'
+#ZSH_HIGHLIGHT_STYLES[arithmetic-expansion]='fg=?'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument-unclosed]='fg=#FF5555'
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[arg0]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[default]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[cursor]='standout'
