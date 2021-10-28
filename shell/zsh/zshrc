@@ -28,27 +28,29 @@ autoload -Uz _zinit
 # plugin list
 # ---------------------------------------------------------
 
+zinit ice wait lucid
 zinit light zsh-users/zsh-completions # 補完
+zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions # 補完
+zinit ice wait lucid
 zinit light zsh-users/zsh-syntax-highlighting
-zinit light chrissicool/zsh-256color
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice wait lucid
+zinit  light chrissicool/zsh-256color
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
 # ---------------------------------------------------------
 # basic
 # ---------------------------------------------------------
 
-## 履歴保存管理
+# 履歴保存管理
 HISTFILE=$ZDOTDIR/.zsh-history
 HISTSIZE=100000
 SAVEHIST=1000000
 
-## 他のzshと履歴を共有
+# 他のzshと履歴を共有
 setopt inc_append_history
 setopt share_history
-
-## 環境変数を補完
-setopt AUTO_PARAM_KEYS
 
 # ---------------------------------------------------------
 # alias
@@ -92,7 +94,7 @@ zstyle ':completion:*' list-colors $LSCOLORS
 # peco
 # ---------------------------------------------------------
 
-## コマンド履歴検索 ctrl+r
+# コマンド履歴検索 ctrl+r
 function peco-history-selection() {
   BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
   CURSOR=$#BUFFER
@@ -101,7 +103,7 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
-## コマンド履歴からディレクトリ検索・移動 ctrl+e
+# コマンド履歴からディレクトリ検索・移動 ctrl+e
 if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
   autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
   add-zsh-hook chpwd chpwd_recent_dirs
@@ -120,7 +122,7 @@ function peco-cdr () {
 zle -N peco-cdr
 bindkey '^E' peco-cdr
 
-## カレントディレクトリ以下のディレクトリ検索・移動 ctrl+x
+# カレントディレクトリ以下のディレクトリ検索・移動 ctrl+x
 function find_cd() {
   local selected_dir=$(find . -type d | peco)
   if [ -n "$selected_dir" ]; then
