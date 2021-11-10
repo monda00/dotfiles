@@ -63,6 +63,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 alias ls='ls -G'
 alias python="python3"
 alias pip="pip3"
+alias kc="kubectl"
 
 # ---------------------------------------------------------
 # prompt
