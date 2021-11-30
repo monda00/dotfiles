@@ -56,6 +56,7 @@ setopt share_history
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/Library/Python/3.8/bin
 
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
@@ -68,7 +69,7 @@ setopt nonomatch
 
 alias ls='ls -G'
 alias python="python3"
-alias pip="pip3"
+alias pip="pip3.8"
 alias k="kubectl"
 
 # ---------------------------------------------------------
