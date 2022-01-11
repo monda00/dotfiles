@@ -38,6 +38,8 @@ zinit ice wait lucid
 zinit  light chrissicool/zsh-256color
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
+zinit ice wait lucid
+zinit light kutsan/zsh-system-clipboard
 
 # ---------------------------------------------------------
 # basic
@@ -55,6 +57,8 @@ setopt share_history
 # PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/Library/Python/3.8/bin
 
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
@@ -67,7 +71,7 @@ setopt nonomatch
 
 alias ls='ls -G'
 alias python="python3"
-alias pip="pip3"
+alias pip="pip3.8"
 alias k="kubectl"
 
 # ---------------------------------------------------------
@@ -145,3 +149,12 @@ function find_cd() {
 }
 zle -N find_cd
 bindkey '^X' find_cd
+
+# ---------------------------------------------------------
+# nvm
+# ---------------------------------------------------------
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
