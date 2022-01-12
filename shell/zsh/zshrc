@@ -73,6 +73,8 @@ alias ls='ls -G'
 alias python="python3"
 alias pip="pip3.8"
 alias k="kubectl"
+alias kx="kubectx"
+alias kn="kubens"
 
 # ---------------------------------------------------------
 # prompt
