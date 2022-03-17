@@ -63,9 +63,9 @@
     "window_name":          {"fg": "white",      "bg": "darkblue", "attrs": ["bold"]},
     "session":              {"fg": "black",      "bg": "gray90",   "attrs": ["bold"]},
     "session:prefix":       {"fg": "gray90",     "bg": "darkblue", "attrs": ["bold"]},
-    "k8s":           { "fg": "solarized:blue", "bg": "gray2", "attrs": ["bold"] },
-    "k8s_namespace": { "fg": "darkcyan",  "bg": "gray2", "attrs": ["bold"] },
-    "k8s_context":   { "fg": "red", "bg": "gray2", "attrs": ["bold"] },
-    "k8s:divider":   { "fg": "gray4",          "bg": "gray2", "attrs": ["bold"] }
+    "k8s":           { "fg": "solarized:blue", "bg": "darkestblue", "attrs": ["bold"] },
+    "k8s_namespace": { "fg": "solarized:red",  "bg": "darkestblue", "attrs": ["bold"] },
+    "k8s_context":   { "fg": "solarized:cyan", "bg": "darkestblue", "attrs": ["bold"] },
+    "k8s:divider":   { "fg": "gray4",          "bg": "darkestblue", "attrs": ["bold"] }
   }
 }
