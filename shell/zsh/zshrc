@@ -72,6 +72,7 @@ setopt nonomatch
 
 alias ls='lsd'
 alias l='ls -l'
+alias lts='ls -l --total-size'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
