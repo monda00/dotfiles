@@ -2,5 +2,67 @@
   name = monda00
   email = monda0524@gmail.com
   signingkey = 210E90ADBB9EE5BD
+
 [commit]
 	gpgsign = true
+
+[alias]
+  #basic
+  a  = add
+  b  = branch
+  c  = commit
+  d  = diff
+  f  = fetch
+  g  = grep
+  l  = log
+  m  = merge
+  o  = checkout
+  pl = pull
+  ps = push
+  s  = status
+  w  = whatchanged
+  cm = commit --message
+  co = checkout
+  cp = cherry-pick
+
+  # log
+  ll = log --graph --topo-order --date=short --abbrev-commit --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset %Cblue%G?%Creset'
+
+  # reset commits
+  reset-commit            = reset --soft HEAD~1
+  reset-commit-hard       = reset --hard HEAD~1
+  reset-commit-hard-clean = !git reset --hard HEAD~1 && git clean -fd
+
+  # undo commits
+  undo-commit             = reset --soft HEAD~1
+  undo-commit-hard        = reset --hard HEAD~1
+  undo-commit-hard-clean  = !git reset --hard HEAD~1 && git clean -fd
+
+  # summary
+  log-of-count-and-format = "!f() { format=\"$1\"; shift; git log $@ --format=oneline --format="$format" | awk '{a[$0]++}END{for(i in a){print a[i], int((a[i]/NR)*100) \"%\", i}}' | sort -nr; }; f"
+  log-of-count-and-format-with-date = "!f() { format=\"$1\"; shift; date_format=\"$1\"; shift; git log $@ --format=oneline --format=\"$format\" --date=format:\"$date_format\" | awk '{a[$0]++}END{for(i in a){print a[i], int((a[i]/NR)*100) \"%\", i}}' | sort -nr; }; f"
+  log-of-count-and-email = "!f() { git log-of-count-and-format \"%aE\" $@; }; f"
+  log-of-count-and-day = "!f() { git log-of-count-and-format-with-date \"%ad\" \"%Y-%m-%d\" $@ ; }; f"
+  churn = !"f() { git log --all --find-copies --find-renames --name-only --format='format:' \"$@\" | awk 'NF{a[$0]++}END{for(i in a){print a[i], i}}' | sort -rn;};f"
+  summary = "!f() { \
+    printf \"Summary of this branch...\n\"; \
+    printf \"%s\n\" $(git rev-parse --abbrev-ref HEAD); \
+    printf \"%s first commit timestamp\n\" $(git log --date-order --format=%cI | tail -1); \
+    printf \"%s last commit timestamp\n\" $(git log -1 --date-order --format=%cI); \
+    printf \"\nSummary of counts...\n\"; \
+    printf \"%d commit count\n\" $(git rev-list --count HEAD); \
+    printf \"%d date count\n\" $(git log --format=oneline --format=\"%ad\" --date=format:\"%Y-%m-%d\" | awk '{a[$0]=1}END{for(i in a){n++;} print n}'); \
+    printf \"%d tag count\n\" $(git tag | wc -l); \
+    printf \"%d author count\n\" $(git log --format=oneline --format=\"%aE\" | awk '{a[$0]=1}END{for(i in a){n++;} print n}'); \
+    printf \"%d committer count\n\" $(git log --format=oneline --format=\"%cE\" | awk '{a[$0]=1}END{for(i in a){n++;} print n}'); \
+    printf \"%d local branch count\n\" $(git branch | grep -v \" -> \" | wc -l); \
+    printf \"%d remote branch count\n\" $(git branch -r | grep -v \" -> \" | wc -l); \
+    printf \"\nSummary of this directory...\n\"; \
+    printf \"%s\n\" $(pwd); \
+    printf \"%d file count via git ls-files\n\" $(git ls-files | wc -l); \
+    printf \"%d file count via find command\n\" $(find . | wc -l); \
+    printf \"%d disk usage\n\" $(du -s | awk '{print $1}'); \
+    printf \"\nMost-active authors, with commit count and %%...\n\"; git log-of-count-and-email | head -7; \
+    printf \"\nMost-active dates, with commit count and %%...\n\"; git log-of-count-and-day | head -7; \
+    printf \"\nMost-active files, with churn count\n\"; git churn | head -7; \
+  }; f"
