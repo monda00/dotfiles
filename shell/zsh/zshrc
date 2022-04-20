@@ -61,6 +61,8 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/Library/Python/3.8/bin
 export PATH=/usr/local/opt/openjdk/bin:$PATH
 
+export GPG_TTY=$(tty)
+
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 
