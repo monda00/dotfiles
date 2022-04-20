@@ -72,14 +72,22 @@ setopt nonomatch
 # alias
 # ---------------------------------------------------------
 
+# ls
 alias ls='lsd'
 alias l='ls -l'
 alias lts='ls -l --total-size'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
+
+# git
+alias g='git'
+
+# python
 alias python="python3"
 alias pip="pip3.8"
+
+# k8s
 alias k="kubectl"
 alias kx="kubectx"
 alias kn="kubens"
