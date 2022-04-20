@@ -1,0 +1,8 @@
+[user]
+  name = monda00
+  email = monda0524@gmail.com
+  signingkey = 210E90ADBB9EE5BD
+[core]
+  quotepath = false
+[commit]
+	gpgsign = true
