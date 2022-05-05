@@ -88,6 +88,7 @@ alias python="python3"
 alias pip="pip3.8"
 
 # k8s
+alias kc="kubecolor"
 alias k="kubectl"
 alias kx="kubectx"
 alias kn="kubens"
