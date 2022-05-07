@@ -92,6 +92,8 @@ alias kc="kubecolor"
 alias k="kubectl"
 alias kx="kubectx"
 alias kn="kubens"
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
+function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
 
 # ---------------------------------------------------------
 # prompt
