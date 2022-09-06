@@ -1,0 +1,10 @@
+name: mlbot
+root: /Users/masa/Documents/outputs/mlbot
+windows:
+  - mlbot:
+      root: /Users/masa/Documents/outputs/mlbot
+      layout: main-vertical
+  - mlbot-history:
+      root: /Users/masa/Documents/outputs/mlbot-history
+  - mlbot-tutorial:
+      root: /Users/masa/Documents/handson/mlbot_tutorial

@@ -68,6 +68,9 @@ bindkey -M viins 'jj' vi-cmd-mode
 
 setopt nonomatch
 
+# fpath
+fpath=($HOME/.tmuxinator/completion ${fpath})
+
 # ---------------------------------------------------------
 # alias
 # ---------------------------------------------------------
@@ -93,7 +96,9 @@ alias k="kubectl"
 alias kx="kubectx"
 alias kn="kubens"
 [ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
-function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
+
+# tmuxinator
+alias mux="tmuxinator"
 
 # ---------------------------------------------------------
 # prompt
