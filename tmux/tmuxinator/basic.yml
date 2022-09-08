@@ -5,7 +5,7 @@ windows:
       layout: main-horizontal
       panes:
         - goal:
-          - cd /Users/masa/Documents/Goal-and-Report
+          - cd /Users/masa/Documents/Goal-and-Reports
           - clear
         - book:
           - cd /Users/masa/Documents/Books
