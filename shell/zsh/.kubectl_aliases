@@ -1261,3 +1261,6 @@ alias kgsvcwslowiden='kubectl get service --watch --show-labels -o=wide --namesp
 alias kgingwslowiden='kubectl get ingress --watch --show-labels -o=wide --namespace'
 alias kgcmwslowiden='kubectl get configmap --watch --show-labels -o=wide --namespace'
 alias kgsecwslowiden='kubectl get secret --watch --show-labels -o=wide --namespace'
+
+# plugin
+alias kimg='kubectl images'
