@@ -1264,3 +1264,9 @@ alias kgsecwslowiden='kubectl get secret --watch --show-labels -o=wide --namespa
 
 # plugin
 alias kimg='kubectl images'
+
+alias kiex='kubectl iexec'
+
+alias krc='kubectl resource-capacity -n $(kubectl config view --minify -o jsonpath='{..namespace}')'
+alias krcp='kubectl resource-capacity -p -n $(kubectl config view --minify -o jsonpath='{..namespace}')'
+alias krcc='kubectl resource-capacity -c -n $(kubectl config view --minify -o jsonpath='{..namespace}')'
