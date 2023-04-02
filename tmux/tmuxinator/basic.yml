@@ -1,15 +1,9 @@
 name: basic
 root: /Users/masa/Documents/outputs
 windows:
-  - main:
-      layout: main-horizontal
-      panes:
-        - goal:
-          - cd /Users/masa/Documents/Goal-and-Reports
-          - clear
-        - book:
-          - cd /Users/masa/Documents/Books
-          - clear
-        - dotfiles:
-          - cd /Users/masa/dotfiles
-          - clear
+  - goal:
+      root: /Users/masa/Documents/Goal-and-Reports
+  - book:
+      root: /Users/masa/Documents/Books
+  - dotfiles:
+      root: /Users/masa/dotfiles

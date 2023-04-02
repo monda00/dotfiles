@@ -1,29 +1,16 @@
 name: blog
 root: /Users/masa/Documents/outputs
 windows:
-  - main:
+  - blog:
+      root: /Users/masa/Documents/outputs/Blog
+  - samples:
       layout: main-horizontal
       panes:
-        - blog:
-          - cd /Users/masa/Documents/outputs/Blog
-          - clear
         - k8s:
           - cd /Users/masa/Documents/handson/kubernetes-samples
           - clear
         - tekton:
           - cd /Users/masa/Documents/handson/tekton-samples
-          - clear
-  - sample:
-      layout: tiled
-      panes:
-        - pack:
-          - cd /Users/masa/Documents/handson/pack-sample
-          - clear
-        - helm:
-          - cd /Users/masa/Documents/handson/helm-sample
-          - clear
-        - prometheus:
-          - cd /Users/masa/Documents/handson/prometheus-grafana-sample
           - clear
   - others:
       layout: tiled

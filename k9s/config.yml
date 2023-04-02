@@ -14,16 +14,20 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: ""
-  currentCluster: ""
+  currentContext: docker-desktop
+  currentCluster: docker-desktop
   clusters:
-    "":
+    docker-desktop:
       namespace:
         active: default
+        lockFavorites: true
         favorites:
         - default
+        - kube-public
+        - kube-system
+        - kube-node-lease
       view:
-        active: po
+        active: pod
       featureGates:
         nodeShell: false
       shellPod:
@@ -35,15 +39,13 @@ k9s:
           cpu: 100m
           memory: 100Mi
       portForwardAddress: localhost
-    docker-desktop:
+    minikube:
       namespace:
-        active: all
+        active: default
+        lockFavorites: true
         favorites:
-        - kube-node-lease
-        - kube-public
-        - kube-system
-        - all
         - default
+        - kube-public
       view:
         active: pod
       featureGates:
