@@ -88,8 +88,8 @@ alias lt='ls --tree'
 alias g='git'
 
 # python
-alias python="python3"
-alias pip="pip3.8"
+alias python="python3.11"
+alias pip="pip3.11"
 
 # k8s
 alias kc="kubecolor"
