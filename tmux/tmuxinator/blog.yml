@@ -1,16 +1,15 @@
 name: blog
-root: /Users/masa/Documents/outputs
 windows:
   - blog:
-      root: /Users/masa/Documents/outputs/Blog
+      root: /Users/masa/Documents/Blog
   - samples:
       layout: main-horizontal
       panes:
         - k8s:
-          - cd /Users/masa/Documents/handson/kubernetes-samples
+          - cd /Users/masa/Documents/Infra/kubernetes-samples
           - clear
         - tekton:
-          - cd /Users/masa/Documents/handson/tekton-samples
+          - cd /Users/masa/Documents/Infra/tekton-samples
           - clear
   - others:
       layout: tiled
