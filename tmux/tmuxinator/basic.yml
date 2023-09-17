@@ -1,5 +1,4 @@
 name: basic
-root: /Users/masa/Documents/outputs
 windows:
   - goal:
       root: /Users/masa/Documents/Goal-and-Reports
