@@ -1310,7 +1310,7 @@
   POWERLEVEL9K_KUBECONTEXT_PROD_CONTENT_EXPANSION+='%248F|%207F${${:-$P9K_KUBECONTEXT_NAMESPACE}:-default}'
 
   # Custom prefix.
-  typeset -g POWERLEVEL9K_KUBECONTEXT_PREFIX='%248Fat '
+  typeset -g POWERLEVEL9K_KUBECONTEXT_PREFIX=''
 
   #[ aws: aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html) ]#
   # Show aws only when the the command you are typing invokes one of these tools.
@@ -1574,7 +1574,7 @@
   # Custom icon.
   # typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # Custom prefix.
-  typeset -g POWERLEVEL9K_TIME_PREFIX='%248Fat '
+  typeset -g POWERLEVEL9K_TIME_PREFIX=''
 
   # Example of a user-defined prompt segment. Function prompt_example will be called on every
   # prompt if `example` prompt segment is added to POWERLEVEL9K_LEFT_PROMPT_ELEMENTS or
