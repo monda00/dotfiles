@@ -1273,3 +1273,5 @@ alias krcc='kubectl resource-capacity -c -n $(kubectl config view --minify -o js
 
 alias kpi='kubectl pod-inspect'
 alias kpd='kubectl pod-dive'
+
+alias kng='kubectl neat get --'

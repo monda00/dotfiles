@@ -56,7 +56,6 @@ setopt share_history
 
 # PATH
 export GOPATH=/Users/masa/go
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/Library/Python/3.8/bin
