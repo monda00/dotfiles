@@ -1,7 +1,18 @@
 name: blog
 windows:
   - blog:
-      root: /Users/masa/Documents/Blog
+      layout: main-horizontal
+      panes:
+        - next-app-router-mdx-blog:
+          - cd /Users/masa/Documents/Develop/amateur-engineer-blog
+          - nvm use v20.9.0
+          - clear
+        - next-app-router-mdx-blog:
+          - cd /Users/masa/Documents/Develop/amateur-engineer-blog
+          - nvm use v20.9.0
+          - clear
+  - sample:
+      root: /Users/masa/Documents/DevOps
   - samples:
       layout: main-horizontal
       panes:
@@ -11,5 +22,14 @@ windows:
         - tekton:
           - cd /Users/masa/Documents/Infra/tekton-samples
           - clear
-  - others:
-      layout: tiled
+  - sample-blog:
+      layout: main-horizontal
+      panes:
+        - next-app-router-mdx-blog:
+          - cd /Users/masa/Documents/Develop/next-app-router-mdx-blog
+          - nvm use v20.9.0
+          - clear
+        - next-app-router-mdx-blog:
+          - cd /Users/masa/Documents/Develop/next-app-router-mdx-blog
+          - nvm use v20.9.0
+          - clear
