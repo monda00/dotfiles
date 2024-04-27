@@ -18,4 +18,7 @@ ln -sf ~/dotfiles/bat.conf ~/.config/bat/config
 source ~/.zshrc
 tmux source ~/.tmux.conf
 
+jenv enable-plugin export
+exec $SHELL -l
+
 echo "finish symbolic link!!"

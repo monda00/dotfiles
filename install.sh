@@ -37,8 +37,6 @@ brew install wireshark --cask
 brew tap homebrew/cask-versions
 # jenv (https://github.com/jenv/jenv)
 brew install jenv
-jenv enable-plugin export
-exec $SHELL -l
 
 # ===========================
 # Node.js
@@ -60,6 +58,10 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 brew install rbenv ruby-build
 rbenv install 3.2.2
 rbenv global 3.2.2
+
+# ===========================
+# Rust
+# ===========================
 
 # ===========================
 # neovim
@@ -119,6 +121,6 @@ brew install tmux
 # tpm (https://github.com/tmux-plugins/tpm)
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # tmuxinator (https://github.com/tmuxinator/tmuxinator)
-gem install tmuxinator
+sudo gem install tmuxinator
 
 echo "install finished!"

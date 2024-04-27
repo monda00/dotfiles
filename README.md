@@ -43,24 +43,27 @@ Create symbolic links
 
 - Chrome
   - Add extentions
+- Logi Options
+- Karabiner
 - Alfred
 - Slack
 - iTerm2
   - Install font
   - Set font
   - Set Hot-key
-  - Import key-binding
+  - Set theme
 - VSCode
-- Logi Options
 - Docker
 - [Shiftlt](https://github.com/fikovnik/ShiftIt/releases)
   - Change hotkey
 - TickTick
 - Notion
+- iStat Menus
 - VirtualBox
 
 ### Install tools
 
+- zsh
 - brew
 - git
 - [Nerd Font](https://www.nerdfonts.com/)
@@ -87,4 +90,5 @@ Create symbolic links
 - tmux
 - jenv
 - nvm
+- peco
 - [iTerm theme](https://github.com/mbadolato/iTerm2-Color-Schemes)
