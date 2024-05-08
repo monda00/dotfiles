@@ -13,15 +13,8 @@ windows:
           - clear
   - sample:
       root: /Users/masa/Documents/DevOps
-  - samples:
-      layout: main-horizontal
-      panes:
-        - k8s:
-          - cd /Users/masa/Documents/Infra/kubernetes-samples
-          - clear
-        - tekton:
-          - cd /Users/masa/Documents/Infra/tekton-samples
-          - clear
+  - sample:
+      root: /Users/masa/Documents/Develop
   - sample-blog:
       layout: main-horizontal
       panes:

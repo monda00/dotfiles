@@ -304,11 +304,8 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 # GCP
 # ---------------------------------------------------------
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/masa/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/masa/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/masa/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/masa/google-cloud-sdk/completion.zsh.inc'; fi
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 # Use a python you have installed in a special location
-export CLOUDSDK_PYTHON=/usr/local/bin/python3.8
+export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3.11
