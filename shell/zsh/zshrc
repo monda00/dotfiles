@@ -61,6 +61,8 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/Library/Python/3.8/bin
 export PATH=/usr/local/opt/openjdk/bin:$PATH
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 export GPG_TTY=$(tty)
 
